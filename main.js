@@ -109,9 +109,7 @@ function playRound(playerSelection) {
         eScore.innerText = `${enemyScore} :Enemy`;
         playerScoreBoard.style.border = '4px solid var(--red)';
         enemyScoreBoard.style.border = '4px solid var(--green)';
-    } 
-
-
+    };
 }
 
 startGame();
