@@ -48,8 +48,10 @@ function playRound(playerSelection) {
             enemyChoice.classList.add('fa-solid', 'fa-fire-flame-curved');
     } else if (enemySelection === 'water') {
         enemyChoice.classList.add('fa-solid', 'fa-droplet');
-    } else {
+    } else if(enemySelection === 'earth') {
         enemyChoice.classList.add('fa-brands', 'fa-envira');
+    } else {
+        enemyChoice.classList.add('fa-solid', 'fa-question')
     }
 }
 
