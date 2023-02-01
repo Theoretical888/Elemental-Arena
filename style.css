@@ -245,17 +245,17 @@ footer {
     padding-right: 10px;
 }
 
-#enemy-choice {
+#enemy-choice-div {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 18vh;
-    width: 100px;
+    width: 18vh;
     border-radius: 50%;
     background-color: var(--off-white);
 }
 
-#enemy-choice span {
+#enemy-choice-div span {
     font-size: 5rem;
 }
 
