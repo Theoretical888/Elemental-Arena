@@ -22,6 +22,13 @@ function getEnemyChoice() {
     } 
 }
 
+function startGame() {
+    elements.forEach((element) => 
+    element.addEventListener('click', () => {
+        playRound(element.id)
+    }))
+}
+
 
 
 
