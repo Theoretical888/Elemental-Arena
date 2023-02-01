@@ -173,41 +173,41 @@ span, .element-name {
     transition: transform 0.4s ease-in-out;
 }
 
-#fire-column {
+#fire {
     background-color:var(--red);
 }
 
-#fire-column:hover span, #fire-column:hover .element-name {
+#fire:hover span, #fire:hover .element-name {
     transform: scale(1.2);
 }
 
-#fire-column:hover, #fire-column:hover span {
+#fire:hover, #fire:hover span {
     color: var(--red);
     background-color: var(--off-white);
 }
 
-#water-column {
+#water {
     background-color:var(--blue);
 }
 
-#water-column:hover span, #water-column:hover .element-name {
+#water:hover span, #water:hover .element-name {
     transform: scale(1.2);
 }
 
-#water-column:hover, #water-column:hover span {
+#water:hover, #water:hover span {
     color: var(--blue);
     background-color:var(--off-white);
 }
 
-#earth-column {
+#earth {
     background-color:var(--green);
 }
 
-#earth-column:hover span, #earth-column:hover .element-name {
+#earth:hover span, #earth:hover .element-name {
     transform: scale(1.2);
 }
 
-#earth-column:hover, #earth-column:hover span {
+#earth:hover, #earth:hover span {
     color: var(--green);
     background-color:var(--off-white);
 }
