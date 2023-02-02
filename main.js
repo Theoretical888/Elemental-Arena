@@ -38,7 +38,7 @@ function checkScore() {
     if (playerScore === 5) {
         document.getElementById('reset-button').style.display = 'block';
     } else if (enemyScore === 5) {
-        document.getElementById('reset-button').style.display = 'block'; 
+        document.getElementById('reset-button').style.display = 'block';  
     } else  {
         return;
     }
@@ -59,7 +59,6 @@ reset.addEventListener('click', () => {
     'fa-fire-flame-curved', 'fa-droplet', 'fa-envira');
     enemyChoice.classList.add('fa-solid', 'fa-question');
     reset.style.display = 'none';
-    startGame();
 });
 
 function playRound(playerSelection) {
