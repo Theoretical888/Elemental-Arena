@@ -1,5 +1,6 @@
 let elements = document.getElementsByClassName('element');
-elements = Array.from(elements)
+elements = Array.from(elements);
+
 
 let playerScore = 0;
 let enemyScore = 0;
@@ -30,15 +31,36 @@ function startGame() {
         playRound(element.id);
     })
   );
+  console.log('begin')
 };
 
 function checkScore() {
-    // create a function to check the score after each round
+    if (playerScore === 5) {
+        document.getElementById('reset-button').style.display = 'block';
+    } else if (enemyScore === 5) {
+        document.getElementById('reset-button').style.display = 'block'; 
+    } else  {
+        return;
+    }
 };
 
-function resetGame() {
-    // create a function to reset the game once the reset button is pressed
-};
+reset.addEventListener('click', () => {
+    event.stopPropagation();
+    playerScore = 0;
+    enemyScore = 0;
+    pScore.innerText = 'Player: 0';
+    eScore.innerText = '0 :Enemy';
+    playerWin.innerText = '';
+    enemyWin.innerText = '';
+    tie.innerText = '';
+    playerScoreBoard.style.border = '4px solid var(--off-white)';
+    enemyScoreBoard.style.border = '4px solid var(--off-white)';
+    enemyChoice.classList.remove('fa-solid', 'fa-brands', 'fa-question', 
+    'fa-fire-flame-curved', 'fa-droplet', 'fa-envira');
+    enemyChoice.classList.add('fa-solid', 'fa-question');
+    reset.style.display = 'none';
+    startGame();
+});
 
 function playRound(playerSelection) {
     let enemySelection = getEnemyChoice();
@@ -110,6 +132,8 @@ function playRound(playerSelection) {
         playerScoreBoard.style.border = '4px solid var(--red)';
         enemyScoreBoard.style.border = '4px solid var(--green)';
     };
+
+    checkScore();
 }
 
 startGame();
