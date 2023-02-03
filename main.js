@@ -1,7 +1,6 @@
 let elements = document.getElementsByClassName('element');
 elements = Array.from(elements);
 
-
 let playerScore = 0;
 let enemyScore = 0;
 let pScore = document.getElementById('player-score');
@@ -30,9 +29,6 @@ function startGame() {
     elements.forEach((element) => {
         element.addEventListener('click', playRoundHandler);
     });
-    elements.forEach((element) => {
-        element.addEventListener('click', audioHandler);
-    });
 }
 
 function checkScore() {
@@ -41,9 +37,6 @@ function checkScore() {
         elements.forEach((element) => {
             element.removeEventListener('click', playRoundHandler);
         });
-        elements.forEach((element) => {
-            element.removeEventListener('click', audioHandler);
-        });
         pScore.style.color = 'var(--green)';
         eScore.style.color = 'var(--red)';
         pScore.innerText = 'WINNER';
@@ -51,7 +44,7 @@ function checkScore() {
     } else if (enemyScore === 5) {
         document.getElementById('reset-button').style.display = 'block';
         elements.forEach((element) => {
-            element.removeEventListener('click', audioHandler);
+            element.removeEventListener('click', playRoundHandler);
         });
         eScore.style.color = 'var(--green)';
         pScore.style.color = 'var(--red)';
@@ -63,7 +56,7 @@ function checkScore() {
 };
 
 reset.addEventListener('click', () => {
-    event.stopPropagation();
+    event.stopImmediatePropagation();
     playerScore = 0;
     enemyScore = 0;
     pScore.innerText = 'Player: 0';
@@ -158,10 +151,6 @@ function playRound(playerSelection) {
 
 const playRoundHandler = (event) => {
     playRound(event.target.id);
-};
-
-function audioHandler() {
-    clickAudio.play();
 };
 
 startGame();
