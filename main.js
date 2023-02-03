@@ -13,6 +13,7 @@ let playerWin = document.getElementById('player-win-alert');
 let tie = document.getElementById('tie-alert');
 let enemyWin = document.getElementById('enemy-win-alert');
 let reset = document.getElementById('reset-button');
+let clickAudio = document.getElementById('click-sound');
 
 function getEnemyChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -28,7 +29,10 @@ function getEnemyChoice() {
 function startGame() {
     elements.forEach((element) => {
         element.addEventListener('click', playRoundHandler);
-    })
+    });
+    elements.forEach((element) => {
+        element.addEventListener('click', audioHandler);
+    });
 }
 
 function checkScore() {
@@ -37,6 +41,9 @@ function checkScore() {
         elements.forEach((element) => {
             element.removeEventListener('click', playRoundHandler);
         });
+        elements.forEach((element) => {
+            element.removeEventListener('click', audioHandler);
+        });
         pScore.style.color = 'var(--green)';
         eScore.style.color = 'var(--red)';
         pScore.innerText = 'WINNER';
@@ -44,7 +51,7 @@ function checkScore() {
     } else if (enemyScore === 5) {
         document.getElementById('reset-button').style.display = 'block';
         elements.forEach((element) => {
-            element.removeEventListener('click', playRoundHandler);
+            element.removeEventListener('click', audioHandler);
         });
         eScore.style.color = 'var(--green)';
         pScore.style.color = 'var(--red)';
@@ -151,6 +158,10 @@ function playRound(playerSelection) {
 
 const playRoundHandler = (event) => {
     playRound(event.target.id);
+};
+
+function audioHandler() {
+    clickAudio.play();
 };
 
 startGame();
