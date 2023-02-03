@@ -26,19 +26,22 @@ function getEnemyChoice() {
 };
 
 function startGame() {
-    elements.forEach((element) => 
-    element.addEventListener('click', () => {
-        playRound(element.id);
+    elements.forEach((element) => {
+        element.addEventListener('click', playRoundHandler);
     })
-  );
-  console.log('begin')
-};
+}
 
 function checkScore() {
     if (playerScore === 5) {
         document.getElementById('reset-button').style.display = 'block';
+        elements.forEach((element) => {
+            element.removeEventListener('click', playRoundHandler);
+        });
     } else if (enemyScore === 5) {
-        document.getElementById('reset-button').style.display = 'block';  
+        document.getElementById('reset-button').style.display = 'block';
+        elements.forEach((element) => {
+            element.removeEventListener('click', playRoundHandler);
+        });
     } else  {
         return;
     }
@@ -59,6 +62,7 @@ reset.addEventListener('click', () => {
     'fa-fire-flame-curved', 'fa-droplet', 'fa-envira');
     enemyChoice.classList.add('fa-solid', 'fa-question');
     reset.style.display = 'none';
+    startGame();
 });
 
 function playRound(playerSelection) {
@@ -133,7 +137,11 @@ function playRound(playerSelection) {
     };
 
     checkScore();
-}
+};
+
+const playRoundHandler = (event) => {
+    playRound(event.target.id);
+};
 
 startGame();
 
