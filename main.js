@@ -37,11 +37,19 @@ function checkScore() {
         elements.forEach((element) => {
             element.removeEventListener('click', playRoundHandler);
         });
+        pScore.style.color = 'var(--green)';
+        eScore.style.color = 'var(--red)';
+        pScore.innerText = 'WINNER';
+        eScore.innerText = 'LOSER';
     } else if (enemyScore === 5) {
         document.getElementById('reset-button').style.display = 'block';
         elements.forEach((element) => {
             element.removeEventListener('click', playRoundHandler);
         });
+        eScore.style.color = 'var(--green)';
+        pScore.style.color = 'var(--red)';
+        eScore.innerText = 'WINNER';
+        pScore.innerText = 'LOSER';
     } else  {
         return;
     }
@@ -62,6 +70,8 @@ reset.addEventListener('click', () => {
     'fa-fire-flame-curved', 'fa-droplet', 'fa-envira');
     enemyChoice.classList.add('fa-solid', 'fa-question');
     reset.style.display = 'none';
+    pScore.style.color = 'var(--off-white)';
+    eScore.style.color = 'var(--off-white)';
     startGame();
 });
 
