@@ -1,6 +1,7 @@
 let elements = document.getElementsByClassName('element');
 elements = Array.from(elements);
 
+
 let playerScore = 0;
 let enemyScore = 0;
 let pScore = document.getElementById('player-score');
@@ -29,6 +30,14 @@ function startGame() {
     elements.forEach((element) => {
         element.addEventListener('click', playRoundHandler);
     });
+    /*for (let element of elements) {
+        element.addEventListener('click', function(event) {
+            targetElement = event.target.closest('.element');
+            playRound(targetElement.id);
+            clickAudio.play();
+            event.stopPropagation();
+        })
+    }*/
 }
 
 function checkScore() {
@@ -149,9 +158,11 @@ function playRound(playerSelection) {
     checkScore();
 };
 
-const playRoundHandler = (event) => {
-    playRound(event.target.id);
-};
+function playRoundHandler(event) {
+    targetElement = event.target.closest('.element')
+    playRound(targetElement.id);
+    clickAudio.play();
+}
 
 startGame();
 
