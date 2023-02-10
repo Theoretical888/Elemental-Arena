@@ -9,9 +9,7 @@ let eScore = document. getElementById('enemy-score')
 let enemyChoice = document.getElementById('enemy-choice');
 let playerScoreBoard = document.getElementById('footer-left');
 let enemyScoreBoard = document.getElementById('footer-right');
-let playerWin = document.getElementById('player-win-alert');
-let tie = document.getElementById('tie-alert');
-let enemyWin = document.getElementById('enemy-win-alert');
+let roundAlert = document.getElementById('round-alert');
 let reset = document.getElementById('reset-button');
 let clickAudio = document.getElementById('click-sound');
 
@@ -40,6 +38,7 @@ function checkScore() {
         });
         pScore.style.color = 'var(--green)';
         eScore.style.color = 'var(--red)';
+        roundAlert.innerText = 'VICTORY! \nYou have brought balance to the elements'
         pScore.innerText = 'WINNER';
         eScore.innerText = 'LOSER';
     } else if (enemyScore === 5) {
@@ -49,6 +48,7 @@ function checkScore() {
         });
         eScore.style.color = 'var(--green)';
         pScore.style.color = 'var(--red)';
+        roundAlert.innerText = 'You have been defeated! \nElemental chaos remains'
         eScore.innerText = 'WINNER';
         pScore.innerText = 'LOSER';
     } else  {
@@ -62,9 +62,7 @@ reset.addEventListener('click', () => {
     enemyScore = 0;
     pScore.innerText = 'Player: 0';
     eScore.innerText = '0 :Enemy';
-    playerWin.innerText = '';
-    enemyWin.innerText = '';
-    tie.innerText = '';
+    roundAlert.innerText = '';
     playerScoreBoard.style.border = '4px solid var(--off-white)';
     enemyScoreBoard.style.border = '4px solid var(--off-white)';
     enemyChoice.classList.remove('fa-solid', 'fa-brands', 'fa-question', 
@@ -92,55 +90,41 @@ function playRound(playerSelection) {
     };
 
     if (playerSelection === enemySelection) {
-        playerWin.innerText = '';
-        enemyWin.innerText = '';
-        tie.innerText = 'It\s a tie';
+        roundAlert.innerText = 'It\s a tie';
         playerScoreBoard.style.border = '4px solid var(--off-white)';
         enemyScoreBoard.style.border = '4px solid var(--off-white)';
     } else if (playerSelection === 'fire' && enemySelection === 'earth') {
-        tie.innerText = '';
-        enemyWin.innerText = '';
-        playerWin.innerText = 'Fire incinerates earth!'
+        roundAlert.innerText = 'Fire incinerates earth! \nYou win this round.';
         playerScore++;
         pScore.innerText = `Player: ${playerScore}`;
         playerScoreBoard.style.border = '4px solid var(--green)';
         enemyScoreBoard.style.border = '4px solid var(--red)';
     } else if (playerSelection === 'fire' && enemySelection === 'water') {
-        tie.innerText = '';
-        playerWin.innerText = '';
-        enemyWin.innerText = 'Water extinguishes fire!'
+        roundAlert.innerText = 'Water extinguishes fire! \nYou lose this round.';
         enemyScore++;
         eScore.innerText = `${enemyScore} :Enemy`;
         playerScoreBoard.style.border = '4px solid var(--red)';
         enemyScoreBoard.style.border = '4px solid var(--green)';
     } else if (playerSelection === 'water' && enemySelection === 'fire') {
-        tie.innerText = '';
-        enemyWin.innerText = '';
-        playerWin.innerText = 'Water extinguishes fire!';
+        roundAlert.innerText = 'Water extinguishes fire! \nYou win this round.';
         playerScore++;
         pScore.innerText = `Player: ${playerScore}`;
         playerScoreBoard.style.border = '4px solid var(--green)';
         enemyScoreBoard.style.border = '4px solid var(--red)';
     } else if (playerSelection === 'water' && enemySelection === 'earth') {
-        tie.innerText = '';
-        playerWin.innerText = '';
-        enemyWin.innerText = 'Earth overpowers water!';
+        roundAlert.innerText = 'Earth overpowers water! \nYou lose this round.';
         enemyScore++;
         eScore.innerText = `${enemyScore} :Enemy`;
         playerScoreBoard.style.border = '4px solid var(--red)';
         enemyScoreBoard.style.border = '4px solid var(--green)';
     } else if (playerSelection === 'earth' && enemySelection === 'water') {
-        tie.innerText = '';
-        enemyWin.innerText = '';
-        playerWin.innerText = 'Earth overpowers water!';
+        roundAlert.innerText = 'Earth overpowers water! \nYou win this round.';
         playerScore++;
         pScore.innerText = `Player: ${playerScore}`;
         playerScoreBoard.style.border = '4px solid var(--green)';
         enemyScoreBoard.style.border = '4px solid var(--red)';
     } else if (playerSelection === 'earth' && enemySelection === 'fire') {
-        tie.innerText = '';
-        playerWin.innerText = '';
-        enemyWin.innerText = 'Fire incinerates earth!';
+        roundAlert.innerText = 'Fire incinerates earth! \nYou lose this round.';
         enemyScore++;
         eScore.innerText = `${enemyScore} :Enemy`;
         playerScoreBoard.style.border = '4px solid var(--red)';
