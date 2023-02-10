@@ -30,14 +30,6 @@ function startGame() {
     elements.forEach((element) => {
         element.addEventListener('click', playRoundHandler);
     });
-    /*for (let element of elements) {
-        element.addEventListener('click', function(event) {
-            targetElement = event.target.closest('.element');
-            playRound(targetElement.id);
-            clickAudio.play();
-            event.stopPropagation();
-        })
-    }*/
 }
 
 function checkScore() {
